@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mesmerizing Digital Clock</title>
+<style>
+  @keyframes glow {
+    0% { text-shadow: 0 0 10px #ff0080, 0 0 20px #ff0080, 0 0 30px #ff66b3, 0 0 40px #ff66b3, 0 0 50px #ff99cc, 0 0 60px #ff99cc; }
+    50% { text-shadow: 0 0 10px #00ffd5, 0 0 20px #00ffd5, 0 0 30px #66ffe8, 0 0 40px #66ffe8, 0 0 50px #99fff2, 0 0 60px #99fff2; }
+    100% { text-shadow: 0 0 10px #ff0080, 0 0 20px #ff0080, 0 0 30px #ff66b3, 0 0 40px #ff66b3, 0 0 50px #ff99cc, 0 0 60px #ff99cc; }
+  }
+
+  @keyframes background {
+    0% { background: linear-gradient(to right, #ff0080, #ff66b3); }
+    50% { background: linear-gradient(to right, #00ffd5, #66ffe8); }
+    100% { background: linear-gradient(to right, #ff0080, #ff66b3); }
+  }
+
+  body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background: linear-gradient(to right, #ff0080, #ff66b3);
+    background-size: 400% 400%;
+    animation: background 10s infinite;
+    font-family: 'Orbitron', sans-serif;
+    color: #fff;
+    overflow: hidden;
+  }
+
+  .clock {
+    color: #fff;
+    font-size: 7rem;
+    font-weight: bold;
+    animation: glow 3s infinite;
+    text-align: center;
+    border: 5px solid rgba(255, 255, 255, 0.25);
+    padding: 30px;
+    border-radius: 25px;
+    background: rgba(0, 0, 0, 0.4);
+    box-shadow: 0 0 40px rgba(255, 255, 255, 0.8), 0 0 60px rgba(255, 255, 255, 0.6);
+  }
+</style>
+</head>
+<body>
+<div class="clock" id="clock"></div>
+<script>
+  function updateClock() {
+    const clockElement = document.getElementById('clock');
+    const now = new Date();
+    const hours = now.getHours().toString().padStart(2, '0');
+    const minutes = now.getMinutes().toString().padStart(2, '0');
+    const seconds = now.getSeconds().toString().padStart(2, '0');
+    clockElement.textContent = `${hours}:${minutes}:${seconds}`;
+  }
+  setInterval(updateClock, 1000);
+  updateClock();
+</script>
+</body>
+</html>
